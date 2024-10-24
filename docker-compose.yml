@@ -1,0 +1,20 @@
+# cat docker-compose.yml
+version: '3.3'
+services:
+### MySQL Container
+  mysql:
+    build:
+      context: ./sql
+      args:
+        - MYSQL_DATABASE=gg
+        - MYSQL_USER=lera
+        - MYSQL_PASSWORD=123
+        - MYSQL_ROOT_PASSWORD=123456
+    ports:
+     - "13306:3306"
+### PHP Container
+  php-nginx:
+    build:
+     context: ./php
+    ports:
+     - "10001:8080"
